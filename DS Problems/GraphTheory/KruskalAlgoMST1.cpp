@@ -7,39 +7,39 @@
 # include <algorithm>
 # include <vector>
 using namespace std;
-
+#define ll long long
 const int MAX= 1e4+5;
-int id[MAX], edge, nodes;
-pair<ll,  pair<int, int> > p[MAX];
+int parent[MAX], edge, node;
+pair<ll, pair<int, int> > p[MAX];
 
 void init()
 {
    for(int i=0; i<MAX; i++)
-       id[i]=i;
+       parent[i]=i;
 }
 
 int root (int x)
 {
-     while(id[x]!=x)
+     while(parent[x]!=x)
         {
-            id[x]= id[id[x]];
-            x=id[x];
+            parent[x]= parent[parent[x]];
+            x=parent[x];
         }
       return x; 
 }
 
-void union(int x, int y)
+void Union(int x, int y)
 {
       int p= root(x);
       int q= root(y);
-      id[p]=id[q];
+      parent[p]=parent[q];
 }
 
 long long kruskal(pair<ll,  pair<int, int> > p[])
 {
     int x, y;
     long long cost , minn=0;
-    for(int i=0; i< edge; i++)
+  for(int i=0; i< edge; i++)
    {
         x = p[i].second.first;
         y = p[i].second.second;
@@ -48,7 +48,7 @@ long long kruskal(pair<ll,  pair<int, int> > p[])
          if(root(x)!=root(y))
          {
                minn+=cost;
-               union(x,y);  
+               Union(x,y);  
          }
    }    
   return minn;

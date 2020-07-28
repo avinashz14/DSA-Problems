@@ -7,9 +7,6 @@
 		{
 			"name": "DataStructures-Algorithms",
 			"path": "../DataStructures-Algorithms"
-		},
-		{
-			"path": "../cp"
 		}
 	],
 	"settings": {}

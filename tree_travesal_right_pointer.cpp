@@ -41,7 +41,7 @@ void preOrder(Node* root )
 {
   if(root==nullptr) return ;
   cout<<root->data<<" ";
-  pree(root->right);
+  preOrder(root->right);
 }
 
 int main()
@@ -52,6 +52,6 @@ int main()
    root->left->left = new Node(3);
    root->left->right = new Node(5);
    modify(root);
-   pree(root);
+   preOrder(root);
    return 0;
 }
