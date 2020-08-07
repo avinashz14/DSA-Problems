@@ -9,13 +9,13 @@
 using namespace std;
 #define ll long long
 const int MAX= 1e4+5;
-int parent[MAX], edge, node;
+int parent[MAX], rank[MAX], edge, node;
 pair<ll, pair<int, int> > p[MAX];
 
 void init()
 {
    for(int i=0; i<MAX; i++)
-       parent[i]=i;
+       parent[i]=i, rank[i]=0;
 }
 
 int root (int x)
@@ -32,6 +32,7 @@ void Union(int x, int y)
 {
       int p= root(x);
       int q= root(y);
+      
       parent[p]=parent[q];
 }
 

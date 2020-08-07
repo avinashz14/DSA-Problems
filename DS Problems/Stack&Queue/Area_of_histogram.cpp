@@ -92,7 +92,7 @@ int maxArea(vector<int> hist, int n)
 	stack<int> st;
 	int area =0;
 	int i=0;
-	for(; i< n;)
+	while(i<n)
 	{
          if(st.empty() || hist[st.top()]<=hist[i])
 		 {
