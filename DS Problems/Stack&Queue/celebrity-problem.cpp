@@ -25,7 +25,7 @@ int celebStack(int n)
 
    // pull two elements form stack
 	int a = st.top();
-	s.pop();
+	st.pop();
 	int b = st.top();
 	st.pop();
 
@@ -48,7 +48,7 @@ int celebStack(int n)
 		 return -1;
 
 	}
-	return s;
+	return c;
 }
  
 int celebTwoPoiner(int n)
