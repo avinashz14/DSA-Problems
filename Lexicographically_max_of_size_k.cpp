@@ -6,6 +6,8 @@ using range query - segmentTree/fenwickTree
 2. O(N) | O(K) space
 using single stack 
 
+
+@nithost 
 2. one is implemented here */
 
 /*
