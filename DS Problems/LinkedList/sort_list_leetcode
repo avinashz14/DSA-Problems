@@ -1,0 +1,78 @@
+/**
+ * Definition for singly-linked list.
+ * struct ListNode {
+ *     int val;
+ *     ListNode *next;
+ *     ListNode() : val(0), next(nullptr) {}
+ *     ListNode(int x) : val(x), next(nullptr) {}
+ *     ListNode(int x, ListNode *next) : val(x), next(next) {}
+ * };
+ */
+class Solution {
+public:
+    ListNode* sortList(ListNode* head) {
+          
+        /* Base cases
+        return head if it has None or single node*/
+        if(!head || !head->next) return head;
+        
+        ListNode* a;
+        ListNode* b;
+        
+        /*Divide the list into 2 part */
+        split(head, &a, &b);
+        
+        /*Then sort them recursively*/
+        a= sortList(a);
+        b= sortList(b);
+        
+        /* merge both list and return merged list*/
+        return sortMerge(a, b);
+        
+    }
+
+    
+    ListNode* sortMerge(ListNode* a, ListNode* b)
+    {
+        ListNode* result = NULL;
+        
+        /*Base cases */
+        if(a==NULL) return b; 
+        else if(b==NULL) return a;
+        
+        /* assign smaller val to result and call recursively with smallers next */
+        if(a->val <= b->val)
+        {
+            result = a;
+            result->next = sortMerge(a->next, b);
+        }
+        else
+        {
+             result = b;
+            result->next = sortMerge(a, b->next);
+        }
+        
+        return result;
+    }
+    
+    /*Split list using slow and fast pointer method*/
+    void split(ListNode* source, ListNode** a, ListNode** b)
+    {
+        ListNode* slow = source;
+        ListNode* fast = source->next;
+
+        while(fast!=NULL)
+        {
+            fast = fast->next;
+            if(fast!=NULL)
+            {
+                fast = fast->next;
+                slow = slow->next;
+            }
+        }
+        
+        *a = source;
+        *b = slow->next;
+        slow->next = NULL;
+    }
+};
